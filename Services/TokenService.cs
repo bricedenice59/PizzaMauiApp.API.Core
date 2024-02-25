@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using PizzaMauiApp.API.Core.Environment;
-using PizzaMauiApp.API.Dtos;
+using PizzaMauiApp.API.Core.Models;
 
 namespace PizzaMauiApp.API.Core.Services;
 
@@ -21,12 +21,12 @@ public class TokenService : ITokenService
         _expirationDelay = Convert.ToDouble(tokenConfig.TokenExpirationDelay);
     }
     
-    public string CreateToken(UserDto user, bool forTestingPurpose = false, int expirationDelayForTestingPurpose = 600)
+    public string CreateToken(TokenUser tokenUser, bool forTestingPurpose = false, int expirationDelayForTestingPurpose = 600)
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.GivenName, user.Name)
+            new Claim(ClaimTypes.Email, tokenUser.Email),
+            new Claim(ClaimTypes.GivenName, tokenUser.Name)
         };
     
         var credentials = new SigningCredentials(_symmetricSecurityKey, SecurityAlgorithms.HmacSha512Signature);
@@ -49,7 +49,7 @@ public class TokenService : ITokenService
         return tokenHandler.WriteToken(token);
     }
 
-    public UserDto? ValidateToken(string token)
+    public TokenUser? ValidateToken(string token)
     {
         if (string.IsNullOrEmpty(token)) 
             return null;
@@ -63,8 +63,8 @@ public class TokenService : ITokenService
             var userEmail = jwtToken.Claims.First(x => x.Type == "email").Value;
             var displayName = jwtToken.Claims.First(x => x.Type == "given_name").Value;
 
-            // return user id from JWT token if validation successful
-            return new UserDto {Email = userEmail, Name = displayName};
+            // return tokenUser id from JWT token if validation successful
+            return new TokenUser {Email = userEmail, Name = displayName};
         }
         catch
         {
