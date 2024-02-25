@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace PizzaMauiApp.API.Shared.EntityFramework.Specifications;
+namespace PizzaMauiApp.API.Core.EntityFramework.Specifications;
 
 public class SpecificationEvaluator<TEntity> where TEntity: BaseModel
 {

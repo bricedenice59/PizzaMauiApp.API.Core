@@ -1,6 +1,6 @@
-using PizzaMauiApp.API.Shared.EntityFramework.Specifications;
+using PizzaMauiApp.API.Core.EntityFramework.Specifications;
 
-namespace PizzaMauiApp.API.Shared.EntityFramework;
+namespace PizzaMauiApp.API.Core.EntityFramework;
 
 public interface IGenericRepository<T>
     where T : BaseModel

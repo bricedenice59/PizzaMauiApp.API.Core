@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.Extensions.FileProviders;
 
-namespace PizzaMauiApp.API.Shared.Environment;
+namespace PizzaMauiApp.API.Core.Environment;
 
 public class DockerUtils
 {

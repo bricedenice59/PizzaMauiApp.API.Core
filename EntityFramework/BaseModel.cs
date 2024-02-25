@@ -1,4 +1,4 @@
-namespace PizzaMauiApp.API.Shared.EntityFramework;
+namespace PizzaMauiApp.API.Core.EntityFramework;
 
 public class BaseModel
 {

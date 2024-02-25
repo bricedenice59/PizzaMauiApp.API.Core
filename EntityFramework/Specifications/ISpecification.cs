@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace PizzaMauiApp.API.Shared.EntityFramework.Specifications;
+namespace PizzaMauiApp.API.Core.EntityFramework.Specifications;
 
 public interface ISpecification<T>
 {

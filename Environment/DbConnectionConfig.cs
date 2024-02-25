@@ -1,7 +1,7 @@
 
 using Microsoft.Extensions.Configuration;
 
-namespace PizzaMauiApp.API.Shared.Environment;
+namespace PizzaMauiApp.API.Core.Environment;
 
 public class DbConnectionConfig
 {
